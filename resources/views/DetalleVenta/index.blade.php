@@ -14,7 +14,7 @@
 <body class="bg-light">
 
     <div class="container text-center my-4">
-        <h1 class="mt-4">Lista de Personas</h1>
+        <h1 class="mt-4">Lista de detalleventas</h1>
     </div>
 
     <div class="p-5 table-responsive">
@@ -22,11 +22,10 @@
             <thead class="table-primary text-white">
                 <tr>
                     <th>ID</th>
-                    <th>Nombre</th>
-                    <th>Apellido</th>
-                    <th>Fecha_nacimiento</th>
-                    <th>Telefono</th>
-                    <!-- <th>ID_Documento</th> -->
+                    <th>ID_Producto</th>
+                    <th>Cantidad</th>
+                    <th>Tipo</th>
+                    <th>Precio_Unitario</th>
                     <th>
                         <button data-bs-toggle="modal" data-bs-target="#modalcreate" type="button"
                             class="btn btn-primary btn-sm">
@@ -36,23 +35,22 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($personas as $persona)
+                @foreach ($detalleventas as $detalleventa)
                 <tr>
-                    <td>{{ $persona->ID_Persona }}</td>
-                    <td>{{ $persona->Nombre }}</td>
-                    <td>{{ $persona->Apellido }}</td>
-                    <td>{{ $persona->Fecha_nacimiento }}</td>
-                    <td>{{ $persona->telefono }}</td>
-                    <!-- <td>{{ $persona->ID_Documento }}</td> -->
+                    <td>{{ $detalleventa->ID_DetalleVenta }}</td>
+                    <td>{{ $detalleventa->ID_Producto }}</td>
+                    <td>{{ $detalleventa->Cantidad }}</td>
+                    <td>{{ $detalleventa->Tipo }}</td>
+                    <td>{{ $detalleventa->Precio_Unitario }}</td>
                     <td>
                         <!-- Botón de Actualizar con ícono de lápiz -->
-                        <button data-bs-toggle="modal" data-bs-target="#modaleditar{{ $persona->ID_Persona }}"
+                        <button data-bs-toggle="modal" data-bs-target="#modaleditar{{ $detalleventa->ID_DetalleVenta }}"
                             type="button" class="btn btn-warning btn-sm">
                             <i class="fa-solid fa-pen-to-square"></i>
                         </button>
 
                         <!-- Botón de Eliminar con ícono de basura -->
-                        <button data-bs-toggle="modal" data-bs-target="#modaldelete{{ $persona->ID_Persona }}"
+                        <button data-bs-toggle="modal" data-bs-target="#modaldelete{{ $detalleventa->ID_DetalleVenta }}"
                             type="button" class="btn btn-danger btn-sm">
                             <i class="fa-solid fa-trash"></i>
                         </button>
@@ -60,51 +58,48 @@
                     </td>
                 </tr>
 
-                <!-- Modal Editar Persona -->
-                <div class="modal fade" id="modaleditar{{ $persona->ID_Persona }}" tabindex="-1"
-                    aria-labelledby="modaleditarLabel{{ $persona->ID_Persona }}" aria-hidden="true">
+                <!-- Modal Editar detalleventa -->
+                <div class="modal fade" id="modaleditar{{ $detalleventa->ID_DetalleVenta }}" tabindex="-1"
+                    aria-labelledby="modaleditarLabel{{ $detalleventa->ID_DetalleVenta }}" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="modaleditarLabel{{ $persona->ID_Persona }}">Actualizar
-                                    Persona</h1>
+                                <h1 class="modal-title fs-5" id="modaleditarLabel{{ $detalleventa->ID_DetalleVenta }}">
+                                    Actualizar
+                                    detalleventa</h1>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                     aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form action="{{ route('persona.update', ['id' => $persona->ID_Persona]) }}"
+                                <form
+                                    action="{{ route('detalleventa.update', ['id' => $detalleventa->ID_DetalleVenta]) }}"
                                     method="post">
                                     @csrf
                                     <div class="form-group">
                                         <label for="id" class="col-form-label">ID</label>
                                         <input type="number" class="form-control" id="id" name="txtid"
-                                            value="{{ $persona->ID_Persona }}" readonly>
+                                            value="{{ $detalleventa->ID_DetalleVenta }}" readonly>
                                     </div>
                                     <div class="form-group">
-                                        <label for="nombre" class="col-form-label">Nombre</label>
-                                        <input type="text" class="form-control" id="nombre" name="txtnombre"
-                                            value="{{ $persona->Nombre }}">
+                                        <label for="ID_Producto" class="col-form-label">ID_Producto</label>
+                                        <input type="text" class="form-control" id="ID_Producto" name="txtID_Producto"
+                                            value="{{ $detalleventa->ID_Producto }}">
                                     </div>
                                     <div class="form-group">
-                                        <label for="apellido" class="col-form-label">Apellido</label>
-                                        <input type="text" class="form-control" id="apellido" name="txtapellido"
-                                            value="{{ $persona->Apellido }}">
+                                        <label for="Cantidad" class="col-form-label">Cantidad</label>
+                                        <input type="text" class="form-control" id="Cantidad" name="txtCantidad"
+                                            value="{{ $detalleventa->Cantidad }}">
                                     </div>
                                     <div class="form-group">
-                                        <label for="fechaNacimiento" class="col-form-label">FechaNacimiento</label>
-                                        <input type="date" class="form-control" id="fechaNacimiento" name="txtfecha"
-                                            value="{{ $persona->Fecha_nacimiento }}">
+                                        <label for="Tipo" class="col-form-label">Tipo</label>
+                                        <input type="date" class="form-control" id="Tipo" name="txtfecha"
+                                            value="{{ $detalleventa->Tipo }}">
                                     </div>
                                     <div class="form-group">
-                                        <label for="telefono" class="col-form-label">Telefono</label>
-                                        <input type="text" class="form-control" id="telefono" name="txttelefono"
-                                            value="{{ $persona->telefono }}">
+                                        <label for="Precio_Unitario" class="col-form-label">Precio_Unitario</label>
+                                        <input type="text" class="form-control" id="Precio_Unitario"
+                                            name="txtPrecio_Unitario" value="{{ $detalleventa->Precio_Unitario }}">
                                     </div>
-                                    <!-- <div class="form-group">
-                                        <label for="iD_Documento" class="col-form-label">ID_Tipo</label>
-                                        <input type="number" class="form-control" id="iD_Documento" name="txttipo"
-                                            value="{{ $persona->ID_Documento }}">
-                                    </div> -->
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary"
                                             data-bs-dismiss="modal">Cancelar</button>
@@ -116,26 +111,30 @@
                     </div>
                 </div>
 
-                <!-- Modal Eliminar Persona -->
-                <div class="modal fade" id="modaldelete{{ $persona->ID_Persona }}" tabindex="-1"
-                    aria-labelledby="modaldeleteLabel{{ $persona->ID_Persona }}" aria-hidden="true">
+                <!-- Modal Eliminar detalleventa -->
+                <div class="modal fade" id="modaldelete{{ $detalleventa->ID_DetalleVenta }}" tabindex="-1"
+                    aria-labelledby="modaldeleteLabel{{ $detalleventa->ID_DetalleVenta }}" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="modaldeleteLabel{{ $persona->ID_Persona }}">Eliminar
-                                    Persona</h1>
+                                <h1 class="modal-title fs-5" id="modaldeleteLabel{{ $detalleventa->ID_DetalleVenta }}">
+                                    Eliminar
+                                    detalleventa</h1>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                     aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <p>¿Estás seguro de que deseas eliminar a {{ $persona->Nombre }} {{ $persona->Apellido }}?</p>
+                                <p>¿Estás seguro de que deseas eliminar a {{ $detalleventa->ID_Producto }} {{
+                                    $detalleventa->Cantidad }}?</p>
                             </div>
                             <div class="modal-footer">
-                                <form action="{{ route('persona.delete', ['id' => $persona->ID_Persona]) }}"
+                                <form
+                                    action="{{ route('detalleventa.delete', ['id' => $detalleventa->ID_DetalleVenta]) }}"
                                     method="post">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Cancelar</button>
                                     <button type="submit" class="btn btn-danger">Eliminar</button>
                                 </form>
                             </div>
@@ -145,44 +144,41 @@
                 @endforeach
             </tbody>
         </table>
-        {{ $personas->links() }}
+        {{ $detalleventas->links() }}
     </div>
 
-    <!-- Modal Crear Persona -->
+    <!-- Modal Crear detalleventa -->
     <div class="modal fade" id="modalcreate" tabindex="-1" aria-labelledby="modalcreateLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="modalcreateLabel">Crear Persona</h1>
+                    <h1 class="modal-title fs-5" id="modalcreateLabel">Crear detalleventa</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ route('persona.store') }}" method="post">
+                    <form action="{{ route('detalleventa.store') }}" method="post">
                         @csrf
                         <div class="form-group">
                             <label for="id" class="col-form-label">ID</label>
                             <input type="number" class="form-control" id="id" name="txtid" required>
                         </div>
                         <div class="form-group">
-                            <label for="nombre" class="col-form-label">Nombre</label>
-                            <input type="text" class="form-control" id="nombre" name="txtnombre" required>
+                            <label for="ID_Producto" class="col-form-label">ID_Producto</label>
+                            <input type="text" class="form-control" id="ID_Producto" name="txtID_Producto" required>
                         </div>
                         <div class="form-group">
-                            <label for="apellido" class="col-form-label">Apellido</label>
-                            <input type="text" class="form-control" id="apellido" name="txtapellido" required>
+                            <label for="Cantidad" class="col-form-label">Cantidad</label>
+                            <input type="text" class="form-control" id="Cantidad" name="txtCantidad" required>
                         </div>
                         <div class="form-group">
-                            <label for="fechaNacimiento" class="col-form-label">Fecha de Nacimiento</label>
-                            <input type="date" class="form-control" id="fechaNacimiento" name="txtfecha" required>
+                            <label for="Tipo" class="col-form-label">Fecha de Nacimiento</label>
+                            <input type="date" class="form-control" id="Tipo" name="txtfecha" required>
                         </div>
                         <div class="form-group">
-                            <label for="telefono" class="col-form-label">Teléfono</label>
-                            <input type="text" class="form-control" id="telefono" name="txttelefono" required>
+                            <label for="Precio_Unitario" class="col-form-label">Teléfono</label>
+                            <input type="text" class="form-control" id="Precio_Unitario" name="txtPrecio_Unitario"
+                                required>
                         </div>
-                        <!-- <div class="form-group">
-                            <label for="iD_Documento" class="col-form-label">ID Tipo</label>
-                            <input type="number" class="form-control" id="iD_Documento" name="txttipo" required>
-                        </div> -->
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                             <button type="submit" class="btn btn-primary">Guardar</button>

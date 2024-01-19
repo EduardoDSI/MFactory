@@ -31,13 +31,18 @@
                 </tr>
                 <tr>
                     <td>2</td>
-                    <td>RegistroAsistencia</td>
-                    <td><a href="{{ route('registroasistencia') }}">link</a></td>
+                    <td>Producto</td>
+                    <td><a href="{{ route('producto') }}">link</a></td>
                 </tr>
                 <tr>
                     <td>3</td>
-                    <td>asd</td>
-                    <td><a href="#">link</a></td>
+                    <td>Inventario</td>
+                    <td><a href="{{ route('inventario') }}">link</a></td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Detalle Venta</td>
+                    <td><a href="{{ route('detalleventa') }}">link</a></td>
                 </tr>
             </tbody>
         </table>

@@ -14,7 +14,7 @@
 <body class="bg-light">
 
     <div class="container text-center my-4">
-        <h1 class="mt-4">Lista de Personas</h1>
+        <h1 class="mt-4">Lista de inventarios</h1>
     </div>
 
     <div class="p-5 table-responsive">
@@ -36,23 +36,23 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($personas as $persona)
+                @foreach ($inventarios as $inventario)
                 <tr>
-                    <td>{{ $persona->ID_Persona }}</td>
-                    <td>{{ $persona->Nombre }}</td>
-                    <td>{{ $persona->Apellido }}</td>
-                    <td>{{ $persona->Fecha_nacimiento }}</td>
-                    <td>{{ $persona->telefono }}</td>
-                    <!-- <td>{{ $persona->ID_Documento }}</td> -->
+                    <td>{{ $inventario->ID_inventario }}</td>
+                    <td>{{ $inventario->Nombre }}</td>
+                    <td>{{ $inventario->Apellido }}</td>
+                    <td>{{ $inventario->Fecha_nacimiento }}</td>
+                    <td>{{ $inventario->telefono }}</td>
+                    <!-- <td>{{ $inventario->ID_Documento }}</td> -->
                     <td>
                         <!-- Botón de Actualizar con ícono de lápiz -->
-                        <button data-bs-toggle="modal" data-bs-target="#modaleditar{{ $persona->ID_Persona }}"
+                        <button data-bs-toggle="modal" data-bs-target="#modaleditar{{ $inventario->ID_inventario }}"
                             type="button" class="btn btn-warning btn-sm">
                             <i class="fa-solid fa-pen-to-square"></i>
                         </button>
 
                         <!-- Botón de Eliminar con ícono de basura -->
-                        <button data-bs-toggle="modal" data-bs-target="#modaldelete{{ $persona->ID_Persona }}"
+                        <button data-bs-toggle="modal" data-bs-target="#modaldelete{{ $inventario->ID_inventario }}"
                             type="button" class="btn btn-danger btn-sm">
                             <i class="fa-solid fa-trash"></i>
                         </button>
@@ -60,50 +60,50 @@
                     </td>
                 </tr>
 
-                <!-- Modal Editar Persona -->
-                <div class="modal fade" id="modaleditar{{ $persona->ID_Persona }}" tabindex="-1"
-                    aria-labelledby="modaleditarLabel{{ $persona->ID_Persona }}" aria-hidden="true">
+                <!-- Modal Editar inventario -->
+                <div class="modal fade" id="modaleditar{{ $inventario->ID_inventario }}" tabindex="-1"
+                    aria-labelledby="modaleditarLabel{{ $inventario->ID_inventario }}" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="modaleditarLabel{{ $persona->ID_Persona }}">Actualizar
-                                    Persona</h1>
+                                <h1 class="modal-title fs-5" id="modaleditarLabel{{ $inventario->ID_inventario }}">Actualizar
+                                    inventario</h1>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                     aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form action="{{ route('persona.update', ['id' => $persona->ID_Persona]) }}"
+                                <form action="{{ route('inventario.update', ['id' => $inventario->ID_inventario]) }}"
                                     method="post">
                                     @csrf
                                     <div class="form-group">
                                         <label for="id" class="col-form-label">ID</label>
                                         <input type="number" class="form-control" id="id" name="txtid"
-                                            value="{{ $persona->ID_Persona }}" readonly>
+                                            value="{{ $inventario->ID_inventario }}" readonly>
                                     </div>
                                     <div class="form-group">
                                         <label for="nombre" class="col-form-label">Nombre</label>
                                         <input type="text" class="form-control" id="nombre" name="txtnombre"
-                                            value="{{ $persona->Nombre }}">
+                                            value="{{ $inventario->Nombre }}">
                                     </div>
                                     <div class="form-group">
                                         <label for="apellido" class="col-form-label">Apellido</label>
                                         <input type="text" class="form-control" id="apellido" name="txtapellido"
-                                            value="{{ $persona->Apellido }}">
+                                            value="{{ $inventario->Apellido }}">
                                     </div>
                                     <div class="form-group">
                                         <label for="fechaNacimiento" class="col-form-label">FechaNacimiento</label>
                                         <input type="date" class="form-control" id="fechaNacimiento" name="txtfecha"
-                                            value="{{ $persona->Fecha_nacimiento }}">
+                                            value="{{ $inventario->Fecha_nacimiento }}">
                                     </div>
                                     <div class="form-group">
                                         <label for="telefono" class="col-form-label">Telefono</label>
                                         <input type="text" class="form-control" id="telefono" name="txttelefono"
-                                            value="{{ $persona->telefono }}">
+                                            value="{{ $inventario->telefono }}">
                                     </div>
                                     <!-- <div class="form-group">
                                         <label for="iD_Documento" class="col-form-label">ID_Tipo</label>
                                         <input type="number" class="form-control" id="iD_Documento" name="txttipo"
-                                            value="{{ $persona->ID_Documento }}">
+                                            value="{{ $inventario->ID_Documento }}">
                                     </div> -->
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary"
@@ -116,22 +116,22 @@
                     </div>
                 </div>
 
-                <!-- Modal Eliminar Persona -->
-                <div class="modal fade" id="modaldelete{{ $persona->ID_Persona }}" tabindex="-1"
-                    aria-labelledby="modaldeleteLabel{{ $persona->ID_Persona }}" aria-hidden="true">
+                <!-- Modal Eliminar inventario -->
+                <div class="modal fade" id="modaldelete{{ $inventario->ID_inventario }}" tabindex="-1"
+                    aria-labelledby="modaldeleteLabel{{ $inventario->ID_inventario }}" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="modaldeleteLabel{{ $persona->ID_Persona }}">Eliminar
-                                    Persona</h1>
+                                <h1 class="modal-title fs-5" id="modaldeleteLabel{{ $inventario->ID_inventario }}">Eliminar
+                                    inventario</h1>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                     aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <p>¿Estás seguro de que deseas eliminar a {{ $persona->Nombre }} {{ $persona->Apellido }}?</p>
+                                <p>¿Estás seguro de que deseas eliminar a {{ $inventario->Nombre }} {{ $inventario->Apellido }}?</p>
                             </div>
                             <div class="modal-footer">
-                                <form action="{{ route('persona.delete', ['id' => $persona->ID_Persona]) }}"
+                                <form action="{{ route('inventario.delete', ['id' => $inventario->ID_inventario]) }}"
                                     method="post">
                                     @csrf
                                     @method('DELETE')
@@ -145,19 +145,19 @@
                 @endforeach
             </tbody>
         </table>
-        {{ $personas->links() }}
+        {{ $inventarios->links() }}
     </div>
 
-    <!-- Modal Crear Persona -->
+    <!-- Modal Crear inventario -->
     <div class="modal fade" id="modalcreate" tabindex="-1" aria-labelledby="modalcreateLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="modalcreateLabel">Crear Persona</h1>
+                    <h1 class="modal-title fs-5" id="modalcreateLabel">Crear inventario</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ route('persona.store') }}" method="post">
+                    <form action="{{ route('inventario.store') }}" method="post">
                         @csrf
                         <div class="form-group">
                             <label for="id" class="col-form-label">ID</label>
