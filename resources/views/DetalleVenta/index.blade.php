@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,11 +12,14 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
 </head>
 
+
 <body class="bg-light">
+
 
     <div class="container text-center my-4">
         <h1 class="mt-4">Lista de detalleventas</h1>
     </div>
+
 
     <div class="p-5 table-responsive">
         <table class="table table-striped table-bordered table-hover">
@@ -49,14 +53,17 @@
                             <i class="fa-solid fa-pen-to-square"></i>
                         </button>
 
+
                         <!-- Botón de Eliminar con ícono de basura -->
                         <button data-bs-toggle="modal" data-bs-target="#modaldelete{{ $detalleventa->ID_DetalleVenta }}"
                             type="button" class="btn btn-danger btn-sm">
                             <i class="fa-solid fa-trash"></i>
                         </button>
 
+
                     </td>
                 </tr>
+
 
                 <!-- Modal Editar detalleventa -->
                 <div class="modal fade" id="modaleditar{{ $detalleventa->ID_DetalleVenta }}" tabindex="-1"
@@ -82,17 +89,17 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="ID_Producto" class="col-form-label">ID_Producto</label>
-                                        <input type="text" class="form-control" id="ID_Producto" name="txtID_Producto"
+                                        <input type="number" class="form-control" id="ID_Producto" name="txtID_Producto"
                                             value="{{ $detalleventa->ID_Producto }}">
                                     </div>
                                     <div class="form-group">
                                         <label for="Cantidad" class="col-form-label">Cantidad</label>
-                                        <input type="text" class="form-control" id="Cantidad" name="txtCantidad"
+                                        <input type="number" class="form-control" id="Cantidad" name="txtCantidad"
                                             value="{{ $detalleventa->Cantidad }}">
                                     </div>
                                     <div class="form-group">
                                         <label for="Tipo" class="col-form-label">Tipo</label>
-                                        <input type="date" class="form-control" id="Tipo" name="txtfecha"
+                                        <input type="text" class="form-control" id="Tipo" name="txtfecha"
                                             value="{{ $detalleventa->Tipo }}">
                                     </div>
                                     <div class="form-group">
@@ -110,6 +117,7 @@
                         </div>
                     </div>
                 </div>
+
 
                 <!-- Modal Eliminar detalleventa -->
                 <div class="modal fade" id="modaldelete{{ $detalleventa->ID_DetalleVenta }}" tabindex="-1"
@@ -147,6 +155,7 @@
         {{ $detalleventas->links() }}
     </div>
 
+
     <!-- Modal Crear detalleventa -->
     <div class="modal fade" id="modalcreate" tabindex="-1" aria-labelledby="modalcreateLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -164,15 +173,15 @@
                         </div>
                         <div class="form-group">
                             <label for="ID_Producto" class="col-form-label">ID_Producto</label>
-                            <input type="text" class="form-control" id="ID_Producto" name="txtID_Producto" required>
+                            <input type="number" class="form-control" id="ID_Producto" name="txtID_Producto" required>
                         </div>
                         <div class="form-group">
                             <label for="Cantidad" class="col-form-label">Cantidad</label>
-                            <input type="text" class="form-control" id="Cantidad" name="txtCantidad" required>
+                            <input type="number" class="form-control" id="Cantidad" name="txtCantidad" required>
                         </div>
                         <div class="form-group">
-                            <label for="Tipo" class="col-form-label">Fecha de Nacimiento</label>
-                            <input type="date" class="form-control" id="Tipo" name="txtfecha" required>
+                            <label for="Tipo" class="col-form-label">Tipo</label>
+                            <input type="text" class="form-control" id="Tipo" name="txtfecha" required>
                         </div>
                         <div class="form-group">
                             <label for="Precio_Unitario" class="col-form-label">Teléfono</label>
@@ -189,9 +198,11 @@
         </div>
     </div>
 
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
 </body>
+
 
 </html>

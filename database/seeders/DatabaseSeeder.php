@@ -23,8 +23,8 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        //Producto::factory(100)->create();
         Persona::factory(300)->create();
+        //Producto::factory(300)->create();
         //Inventario::factory(300)->create();
         //DetalleVenta::factory(300)->create();
         //$this->call(PersonaSeeder::class);
